@@ -1,3 +1,4 @@
+require 'simple/machine'
 require 'simple/inspector'
 require 'simple/number'
 require 'simple/add'
