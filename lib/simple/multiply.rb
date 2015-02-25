@@ -1,10 +1,10 @@
 class Multiply < Struct.new(:left, :right)
   include Inspector
 
-  def reduce
+  def reduce(environment)
     case
-    when left.reducible?  then self.class.new(left.reduce, right)
-    when right.reducible? then self.class.new(left, right.reduce)
+    when left.reducible?  then self.class.new(left.reduce(environment), right)
+    when right.reducible? then self.class.new(left, right.reduce(environment))
     else
       Number.new(left.value * right.value)
     end

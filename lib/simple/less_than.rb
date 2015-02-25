@@ -5,10 +5,10 @@ class LessThan < Struct.new(:left, :right)
     true
   end
 
-  def reduce
+  def reduce(environment)
     case
-    when left.reducible?  then LessThan.new(left.reduce, right)
-    when right.reducible? then LessThan.new(left, right.reduce)
+    when left.reducible?  then LessThan.new(left.reduce(environment), right)
+    when right.reducible? then LessThan.new(left, right.reduce(environment))
     else
       Boolean.new(left.value < right.value)
     end
